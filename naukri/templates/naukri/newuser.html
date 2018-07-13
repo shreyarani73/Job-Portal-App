@@ -1,0 +1,16 @@
+<form method='POST' action=''>
+	{% csrf_token %}
+	<p><label for="applicant.s_name">Name*: </label>
+		<input id="applicant.s_name" type="text" name="s_name" maxlength="100" required /></p>
+		
+	<p><label for="applicant.email">Email*: </label>
+		<input id="applicant.email" type="text" name="email" maxlength="100" required /></p>
+
+	<p><label for="applicant.contactno">Contact number*: </label>
+		<input id="applicant.contactno" type="integer" name="contactno" maxlength="12" minlength="10" required /></p>
+
+	<p><label for="applicant.skills">Skills*: </label>
+		<input id="applicant.skills" type="text" name="skills" maxlength="100" required /></p>
+
+	<input type= 'submit' value='Submit' />
+</form>

@@ -1,0 +1,29 @@
+<form method='POST' action=''>
+	{% csrf_token %}
+	
+	<p><label for="newjob.designation">Designation*: </label>
+		<input id="newjob.designation" type="text" name="designation" maxlength="100" required /></p>
+		
+	<p><label for="newjob.hr_name">HR Name*: </label>
+		<input id="newjob.hr_name" type="text" name="hr_name" maxlength="100" required /></p>
+	
+	<p><label for="newjob.experience">Experience*: </label>
+		<input id="newjob.experience" type="text" name="experience" maxlength="100" required /></p>
+	
+	<p><label for="newjob.vacancy">Vacancy*: </label>
+		<input id="newjob.vacancy" type="text" name="vacancy" maxlength="100" required /></p>
+	
+	<p><label for="newjob.place">Place*: </label>
+		<input id="newjob.place" type="text" name="place" maxlength="100" required /></p>
+	
+	<p><label for="newjob.salary">Salary*: </label>
+		<input id="newjob.salary" type="text" name="salary" maxlength="100" required /></p>
+	
+	<p><label for="newjob.jobtype">Job Type*: </label>
+		<input id="newjob.jobtype" type="text" name="jobtype" maxlength="100" required /></p>
+	
+	<p><label for="newjob.required_skills">Required Skills*: </label>
+		<input id="newjob.required_skills" type="text" name="required_skills" maxlength="100" required /></p>
+	
+	<input type= 'submit' value='Submit' />
+</form>

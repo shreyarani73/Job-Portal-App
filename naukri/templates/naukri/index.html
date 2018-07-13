@@ -1,0 +1,11 @@
+
+{% if alljob %}
+<ul>
+	{% for each in alljob %}
+	<p><li><a href="{% url 'naukri:jobdetail' each.id %}"><h3>{{each.company}}-{{ each.designation }} </h3></a></li><br>
+		Job Type: {{each.jobtype}}<br>Salary: {{each.salary}}/-</p>
+	{% endfor %}
+</ul>
+{% endif %}
+
+<a href="{% url 'naukri:addjob' %}"><button>Add jobs here</button></a>
