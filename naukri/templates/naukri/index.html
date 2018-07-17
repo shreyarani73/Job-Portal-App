@@ -1,11 +1,31 @@
 
-{% if alljob %}
-<ul>
-	{% for each in alljob %}
-	<p><li><a href="{% url 'naukri:jobdetail' each.id %}"><h3>{{each.company}}-{{ each.designation }} </h3></a></li><br>
-		Job Type: {{each.jobtype}}<br>Salary: {{each.salary}}/-</p>
-	{% endfor %}
-</ul>
-{% endif %}
+{% load static %}
 
-<a href="{% url 'naukri:addjob' %}"><button>Add jobs here</button></a>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'naukri/style.css' %}">
+</head>
+<title></title>
+<body>
+	<div class="card-container">
+		{% if alljob %}
+			{% for each in alljob %}
+			<div class="card">
+				<div class="card__title">
+					<a href="{% url 'naukri:jobdetail' each.id %}"><h2>{{each.designation}}</h2></a>
+					<h3>{{ each.company }}</h3>
+				</div>
+				<div class="card__description">
+					<p>Job Type: {{each.jobtype}}<br>Salary: {{each.salary}}/-
+					<a href="{% url 'naukri:jobdetail' each.id %}"><button>View Details</button></a></p>
+				</div>
+			</div>
+			{% endfor %}
+		{% endif %}
+	</div>
+	<a href="{% url 'naukri:newcomp' %}" class="button"><button type="button">Register Company Here</button></a>
+	<a href="{% url 'naukri:newjob' %}" class="button"><button type="button">Add jobs Here</button></a>
+	</div>
+</body>
+</html>

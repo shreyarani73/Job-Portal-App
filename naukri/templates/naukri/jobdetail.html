@@ -1,8 +1,17 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'naukri/style.css' %}">
+</head>
+<title></title>
+<body>
 <h2><b>{{ detail.designation }}</b></h2>
 <ul>
 	<li><h3><b>Company : {{ detail.company }}</b></h3></li>
 	<li><h4><b>Job Type : </b>{{ detail.jobtype }}</h4></li>
-	<li><h4><b>Experience : </b>{{ detail.experience }}</h4></li>
+	<li><h4><b>Experience : </b>{{ detail.experience }} yrs</h4></li>
 	<li><h4><b>Place : </b>{{ detail.place }}</h4></li>
 	<li><h4><b>Required Skills : </b>{{ detail.required_skills }}</h4></li>
 	<li><h4><b>Salary : </b>{{ detail.salary }}</h4></li>
@@ -11,3 +20,5 @@
 </ul>
 
 <a href="{% url 'naukri:newuser' detail.id %}"><button>Apply</button></a>
+</body>
+</html>

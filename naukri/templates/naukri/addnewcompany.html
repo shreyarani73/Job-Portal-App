@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'naukri/style.css' %}">
+</head>
+<title></title>
+<body>
+<form method='POST' action=''>
+	{% csrf_token %}
+	
+	<p><label for="newcomp.company_name">Company Name*: </label>
+		<input id="newcomp.company_name" type="text" name="company_name" maxlength="100" required /></p>
+		
+	<p><label for="newcomp.company_address">Company Address*: </label>
+		<input id="newcomp.company_address" type="text" name="company_address" maxlength="100" required /></p>
+	
+	<p><label for="newcomp.description">Description*: </label>
+		<input id="newcomp.description" type="text" name="description" maxlength="100" required /></p>
+	
+	<p><label for="newcomp.contactno">Contact No.*: </label>
+		<input id="newcomp.contactno" type="text" name="contactno" maxlength="12" minlength="10" required /></p>
+	
+	<input type= 'submit' value='Submit' />
+</form>
+</body>
+</html>

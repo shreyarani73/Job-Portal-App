@@ -26,7 +26,7 @@ def apply(request, job_id):
 	return render(request, 'naukri/newuser.html',context)
 
 def addnewjob(request):
-
+	return HttpResponse('<h1>adding</h1>')
 	if request.method == 'POST':
 		newjob = Job.objects.create(
 			designation = request.POST['designation'],
@@ -44,17 +44,14 @@ def addnewjob(request):
 	return render(request, 'naukri/addnewjob.html',context)
 
 def addnewcompany(request):
-	return HttpResponse('<h1>done</h1>')
-	# if request.method == 'POST':
-	# 	newcomp = Company.objects.create(
-	# 			company_name = request.POST['company_name'],
-	# 			company_address = request.POST['company_address'],
-	# 			description = request.POST['description'],
-	# 			contactno = request.POST['contactno'],
-
-	# 	newcomp.save()
-	# 	context = {'newcomp': newcomp}
-	# else:
-	# 	context = {}
-	# return render(request, 'naukri/addnewcompany.html',context)
-
+	if request.method == 'POST':
+		newcomp = Company.objects.create(
+			company_name = request.POST['company_name'],
+			company_address = request.POST['company_address'],
+			description = request.POST['description'],
+			contactno = request.POST['contactno'])
+		newcomp.save()
+		context = {'newcomp':newcomp}
+	else:
+		context = {}
+	return render(request,'naukri/addnewcompany.html',context)
