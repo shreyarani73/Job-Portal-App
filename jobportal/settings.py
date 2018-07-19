@@ -126,9 +126,8 @@ STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'naukri/static'),
+    os.path.join(BASE_DIR, 'naukri/static'))
 
 # redirect user upon a succesful login
 # LOGIN_REDIRECT_URL = '/'
 # LOGOUT_REDIRECT_URL = '/'
-
