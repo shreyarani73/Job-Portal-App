@@ -1,53 +1,57 @@
+{% if user.is_authenticated %}        
+	
+	{% load static %}
 
-{% load static %}
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<title></title>
+	</head><link rel="stylesheet" href="{% static 'naukri/style.css' %}">
+	<body>
+	<form method='POST' action='' autocomplete="off" >
+		{% csrf_token %}
+		<div class = "container">
+			<div class="row align-items-center">
+				<div class="col-lg">
+				<label for="applicant.s_name">Name*: </label>
+					<input id="applicant.s_name" type="text" name="s_name" maxlength="100" placeholder="Your Name"  required />
+				</div>
+			</div>
+		</div>
+	<br>
+		<div class = "container">
+			<div class="row">
+				<div class="col-lg">
+				<label for="applicant.email" class="col-sm-2 col-form-label">Email*: </label>
+					<input id="applicant.email" type="text" name="email" maxlength="100" placeholder= "Your Email" required />
+				</div>
+			</div>
+		</div>
+	<br>
+		<div class = "container">
+			<div class="row">
+				<div class="col-lg">
+				<label for="applicant.contactno" class="col-sm-2 col-form-label">Contact number*: </label>
+					<input id="applicant.contactno" type="integer" name="contactno" maxlength="12" minlength="10" placeholder="Your Contact no." required />
+				</div>
+			</div>
+		</div>
+	<br>
+		<div class = "container">
+			<div class="row">
+				<div class="col-lg">
+				<label for="applicant.skills" class="col-sm-2 col-form-label">Skills*: </label>
+					<input id="applicant.skills" type="text" name="skills" maxlength="100" placeholder="Your Skills" required />
+				</div>
+			</div>
+		</div>
+	<br>
 
-<!DOCTYPE html>
-<html>
-<head>
-<title></title>
-</head><link rel="stylesheet" href="{% static 'naukri/style.css' %}">
-<body>
-<form method='POST' action='' >
-	{% csrf_token %}
-	<div class = "container">
-		<div class="row align-items-center">
-			<div class="col-lg">
-			<label for="applicant.s_name">Name*: </label>
-				<input id="applicant.s_name" type="text" name="s_name" maxlength="100" placeholder="Your Name" required />
-			</div>
-		</div>
+		<input type= 'submit' value='Submit'/>
+	</form>
 	</div>
-<br>
-	<div class = "container">
-		<div class="row">
-			<div class="col-lg">
-			<label for="applicant.email" class="col-sm-2 col-form-label">Email*: </label>
-				<input id="applicant.email" type="text" name="email" maxlength="100" placeholder= "Your Email" required />
-			</div>
-		</div>
-	</div>
-<br>
-	<div class = "container">
-		<div class="row">
-			<div class="col-lg">
-			<label for="applicant.contactno" class="col-sm-2 col-form-label">Contact number*: </label>
-				<input id="applicant.contactno" type="integer" name="contactno" maxlength="12" minlength="10" placeholder="Your Contact no." required />
-			</div>
-		</div>
-	</div>
-<br>
-	<div class = "container">
-		<div class="row">
-			<div class="col-lg">
-			<label for="applicant.skills" class="col-sm-2 col-form-label">Skills*: </label>
-				<input id="applicant.skills" type="text" name="skills" maxlength="100" placeholder="Your Skills" required />
-			</div>
-		</div>
-	</div>
-<br>
-
-	<input type= 'submit' value='Submit'/>
-</form>
-</div>
-</body>
-</html>
+	</body>
+	</html>
+{% else %}
+	<h1>You have to login first!</h1>
+{% endif %}

@@ -1,9 +1,44 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,redirect
+from django.http import HttpResponseRedirect
 from .models import *
 from django.urls import reverse
-from .forms import *
+from django.template import RequestContext
+# from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate,logout,login
 # Create your views here.
+
+# this login required decorator is to not allow to any  
+# view without authenticating
+
+def mylogin(request):
+	msg=[]
+	if request.method == 'POST':
+		username = request.POST['username']
+		password = request.POST['password']
+		user = authenticate(username=username, password=password)
+		if user is not None:
+			if user.is_active:
+				login(request, user)
+				msg.append("login successful")
+				return HttpResponseRedirect('/')
+			else:
+				msg.append("disabled account")
+		else:
+			msg.append('invalid username/password')
+	else:
+		msg.append('Invalid Login')
+	return render(request,'naukri/login.html', {'errors': msg})
+
+# this login required decorator is to not allow to any  
+# view without authenticating
+# @login_required(login_url="login/")
+
+
+def mylogout(request):
+    logout(request)
+    # Redirect to a success page.
+    return redirect('/')
+
 def index(request):
 	alljob = Job.objects.all()
 	return render(request, 'naukri/index.html', {'alljob':alljob})
@@ -26,7 +61,7 @@ def apply(request, job_id):
 	return render(request, 'naukri/newuser.html',context)
 
 def addnewjob(request):
-	return HttpResponse('<h1>adding</h1>')
+	# return HttpResponse('<h1>adding</h1>')
 	if request.method == 'POST':
 		newjob = Job.objects.create(
 			designation = request.POST['designation'],
