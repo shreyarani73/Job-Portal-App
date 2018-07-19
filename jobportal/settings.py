@@ -129,8 +129,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'naukri/static'),
 
 # redirect user upon a succesful login
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+# LOGIN_REDIRECT_URL = '/'
+# LOGOUT_REDIRECT_URL = '/'
 
 # DEBUG_TOOLBAR_CONFIG = {
 #     'SHOW_TOOLBAR_CALLBACK': 
