@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'naukri/style.css' %}">
+</head>
+<title></title>
+<body>
+<form method='POST' action='{% url 'naukri:verifycompany' %}'>
+	{% csrf_token %}
+	
+	<p><label for="company_name">Enter company name: </label>
+		<input id="company_name" type="text" name="company_name" maxlength="100" required /></p>
+	
+	<input type= 'submit' value='Submit' />
+</form>
+</body>
+</html>
+

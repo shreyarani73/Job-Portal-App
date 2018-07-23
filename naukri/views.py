@@ -1,15 +1,12 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from .models import *
 from django.urls import reverse
-from django.template import RequestContext
+from django.template import loader,RequestContext
 # from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,logout,login
 # Create your views here.
-
-# this login required decorator is to not allow to any  
-# view without authenticating
-
+# --------------------------------------------------------------------------------------------------------
 def mylogin(request):
 	msg=[]
 	if request.method == 'POST':
@@ -33,19 +30,23 @@ def mylogin(request):
 # view without authenticating
 # @login_required(login_url="login/")
 
+# ----------------------------------------------------------------------------------------------------------
 
 def mylogout(request):
     logout(request)
     # Redirect to a success page.
     return redirect('/')
+# ----------------------------------------------------------------------------------------------------------
 
 def index(request):
 	alljob = Job.objects.all()
 	return render(request, 'naukri/index.html', {'alljob':alljob})
+# -----------------------------------------------------------------------------------------------------------
 
 def jobdetail(request,job_id):
 	detail = Job.objects.get(pk = job_id)
 	return render(request, 'naukri/jobdetail.html', {'detail':detail})
+# -----------------------------------------------------------------------------------------------------------
 
 def apply(request, job_id):
 	if request.method == 'POST':
@@ -59,11 +60,34 @@ def apply(request, job_id):
 	else:
 		context = {}
 	return render(request, 'naukri/newuser.html',context)
+# -------------------------------------------------------------------------------------------------------------
+
+def addjob(request):
+	return render(request, 'naukri/verifycompany.html')
+# -----------------------------------------------------------------------------------------------------------
+
+def verifycompany(request):
+	if request.method == 'POST':
+		company_name = request.POST['company_name']
+		company_name = list(Company.objects.filter(company_name = company_name))
+		if len(company_name) > 0 :
+			company_name = company_name[0]
+			jobs = company_name.job.all()
+			context = {'jobs':jobs}
+			template = loader.get_template('naukri/companyview.html')
+			return HttpResponse(template.render(context))
+		else:
+			return HttpResponse('<h2>Company does not exist!</h2>')
+	else:
+		return HttpResponse('<h2>Invalid request!</h2>')
+	return render(request,'naukri/verifycompany.html',{'company_name':company_name})
+# -----------------------------------------------------------------------------------------------------------------
 
 def addnewjob(request):
 	# return HttpResponse('<h1>adding</h1>')
 	if request.method == 'POST':
 		newjob = Job.objects.create(
+			# company_id = request.POST['Company.objects.get(pk = company_id)'],
 			designation = request.POST['designation'],
 			hr_name = request.POST['hr_name'],
 			experience = request.POST['experience'],
@@ -77,6 +101,7 @@ def addnewjob(request):
 	else:
 		context = {}
 	return render(request, 'naukri/addnewjob.html',context)
+#-------------------------------------------------------------------------------------------------------------------- 
 
 def addnewcompany(request):
 	if request.method == 'POST':
@@ -90,3 +115,11 @@ def addnewcompany(request):
 	else:
 		context = {}
 	return render(request,'naukri/addnewcompany.html',context)
+# ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+

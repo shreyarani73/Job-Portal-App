@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'naukri/style.css' %}">
+</head>
+<title></title>
+<body>
+	{% if jobs %}
+		{% for each in jobs %}
+		<h2><b>{{ each.designation }}</b></h2>
+		<ul>
+			<li><h4><b>Job Type : </b>{{ each.jobtype }}</h4></li>
+			<li><h4><b>Experience : </b>{{ each.experience }} yrs</h4></li>
+			<li><h4><b>Place : </b>{{ each.place }}</h4></li>
+			<li><h4><b>Required Skills : </b>{{ each.required_skills }}</h4></li>
+			<li><h4><b>Salary : </b>{{ each.salary }}</h4></li>
+			<li><h4><b>Contact Person : </b>{{ each.hr_name }}</h4></li>
+			<li><h4><b>Total Vacancy : </b>{{ each.vacancy }}</h4></li>
+		</ul>
+		{% endfor %}
+	{% endif %}
+<a href="{% url 'naukri:newjob' %}" class="button"><button type="button">Add jobs</button></a>
+</div>
+</body>
+</html>

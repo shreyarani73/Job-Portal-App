@@ -5,20 +5,24 @@ class Company(models.Model):
 	company_name = models.CharField(max_length=100)
 	company_address = models.CharField(max_length=100)
 	description = models.CharField(max_length=100)
-	contactno = models.BigIntegerField(default=0)
+	contactno = models.CharField(max_length=10)
 
 	def __str__(self):
 		return self.company_name
 
 	
 class Job(models.Model):
-	company = models.ForeignKey(Company,on_delete=models.CASCADE)
+	company = models.ForeignKey(
+		Company,
+		on_delete=models.CASCADE,
+		related_name = 'job'
+	)
 	designation = models.CharField(max_length=100)
 	hr_name = models.CharField(max_length=100)
-	experience = models.IntegerField(default=0)
-	vacancy = models.IntegerField(default=0)
+	experience = models.CharField(max_length=10)
+	vacancy = models.CharField(max_length=100)
 	place = models.CharField(max_length=100)
-	salary = models.BigIntegerField(default=0)
+	salary = models.CharField(max_length=100)
 	jobtype = models.CharField(max_length=100)
 	required_skills = models.CharField(max_length=1000)
 
@@ -32,7 +36,7 @@ class Seeker(models.Model):
 	s_name = models.CharField(max_length=20,null=False,blank=False)
 	jobs =  models.ManyToManyField(Job)
 	email = models.EmailField(max_length=100)
-	contactno = models.BigIntegerField(default=0)
+	contactno = models.CharField(max_length=10)
 	skills = models.CharField(max_length=100)
 
 	def __str__(self):

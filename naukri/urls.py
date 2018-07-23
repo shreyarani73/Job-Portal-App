@@ -16,7 +16,11 @@ urlpatterns = [
     # /<job_id>/apply/
     url(r'^(?P<job_id>[0-9]+)/apply/$',views.apply,name='newuser'),
     # /addjob
-    url(r'^addjob/$',views.addnewjob,name='newjob'),
-    # /addjob/addcompany
+    url(r'^addjob/$',views.addjob,name='addjob'),
+    # /verifycompany
+    url(r'^verifycompany/$',views.verifycompany,name='verifycompany'),
+    # /<company_id>/addjob
+    url(r'^verifycompany/addnewjob/$',views.addnewjob,name='newjob'),
+    # /addcompany
     url(r'^addcompany/$',views.addnewcompany,name='newcomp'),
 ]
