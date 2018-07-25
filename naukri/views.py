@@ -22,8 +22,8 @@ def mylogin(request):
 				msg.append("disabled account")
 		else:
 			msg.append('invalid username/password')
-	else:
-		msg.append('Invalid Login')
+	# else:
+	# 	msg.append('Invalid Login')
 	return render(request,'naukri/login.html', {'errors': msg})
 
 # this login required decorator is to not allow to any  
