@@ -17,11 +17,13 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="{% url 'naukri:index' %}">Home</a></li>
-      <li><a href="#">Profile</a></li>
+      <li class="active"><a href="#">Profile</a></li>
       {% if user.is_authenticated %}
       <li><a href="{% url 'naukri:mylogout' %}"><button>Logout</button></a></li>
       {% else %}
       <li><a href="{% url 'naukri:mylogin' %}"><button>Login</button></a></li>
+      <li><a href="{% url 'social:begin' 'facebook' %}"><button>Login with Facebook</button></a></li>
+      <li><a href="{% url 'social:begin' 'google-oauth2' %}"><button>Login with Google</button></a></li>
       {% endif %}
     </ul>
   </div>

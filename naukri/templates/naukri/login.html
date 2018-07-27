@@ -11,27 +11,28 @@
 </head>
 <body>
 
+{% block navigation %}
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{% url 'naukri:index' %}">
-        <img src="{% static 'naukri/images/icon.png' %}" width="30" height="30" alt="Logo">
+      <a class="navbar-brand" href="{% url 'naukri:index' %}">
+      <img src="{% static 'naukri/images/icon.png' %}" width="30" height="30" alt="Logo">
     </a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="{% url 'naukri:index' %}">Home</a></li>
-      <li><a href="#">Profile</a></li>
+      <li class="active"><a href="#">Profile</a></li>
       {% if user.is_authenticated %}
       <li><a href="{% url 'naukri:mylogout' %}"><button>Logout</button></a></li>
       {% else %}
       <li><a href="{% url 'naukri:mylogin' %}"><button>Login</button></a></li>
+      <li><a href="{% url 'social:begin' 'facebook' %}"><button>Login with Facebook</button></a></li>
       {% endif %}
     </ul>
   </div>
 </nav>
-
-
-
+{% endblock %}
+  
      <!-- login avatar -->
      <div class="container">
         <div class="card card-container">

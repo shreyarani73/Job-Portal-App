@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'naukri',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'jobportal.urls'
@@ -68,6 +70,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  # <--
+                'social_django.context_processors.login_redirect', # <--
             ],
         },
     },
@@ -119,6 +123,21 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+# Social authentication backend
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2', # for Facebook authentication
+    'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+    'social_core.backends.google.GoogleOpenId',  # for Google authentication
+    'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+    'django.contrib.auth.backends.ModelBackend', #for using django.contrib.auth application or users won’t be able to login by username / password method.
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '672396686444999'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '694eb2ac1c20c3314d0102d83265c271'  # App Secret
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '938379271699-nh0n6voj2o8it42pd00omdugk4alrtbq.apps.googleusercontent.com' # App ID
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'A215cjkei1WN_kQuCbUxFPEG' # App Secret
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/

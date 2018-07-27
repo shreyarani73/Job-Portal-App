@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^__debug__/', include(debug_toolbar.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'', include('naukri.urls')),
+     url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
 ]
