@@ -22,8 +22,8 @@
       <li><a href="{% url 'naukri:mylogout' %}"><button>Logout</button></a></li>
       {% else %}
       <li><a href="{% url 'naukri:mylogin' %}"><button>Login</button></a></li>
-      <li><a href="{% url 'social:begin' 'facebook' %}"><button>Login with Facebook</button></a></li>
-      <li><a href="{% url 'social:begin' 'google-oauth2' %}"><button>Login with Google</button></a></li>
+      <li><a href="{% url 'social:begin' 'facebook' %}"><button>Login with <i class="fa fa-facebook-official"></i></button></a></li>
+      <li><a href="{% url 'social:begin' 'google-oauth2' %}"><button>Login with <i class="fa fa-google"></i></button></a></li>
       {% endif %}
     </ul>
   </div>

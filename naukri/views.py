@@ -63,7 +63,7 @@ def apply(request, job_id):
 # -------------------------------------------------------------------------------------------------------------
 
 def addjob(request):
-	return render(request, 'naukri/verifycompany.html')
+	return render(request, 'naukri/verifycompany.html') #<--- problem!!!
 # -----------------------------------------------------------------------------------------------------------
 
 def verifycompany(request):
