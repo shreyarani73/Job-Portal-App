@@ -17,7 +17,7 @@ li a {
     display: grid;
     padding: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    grid-gap: 2rem;
+    grid-gap: 1rem;
 }
 .card__title {
     font-size: 2rem;
