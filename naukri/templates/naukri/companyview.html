@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'naukri/style.css' %}">
+<title></title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body>
+
+
+{% block navigation %}
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'naukri:index' %}">
+      <img src="{% static 'naukri/images/icon.png' %}" width="30" height="30" alt="Logo">
+    </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url 'naukri:index' %}">Home</a></li>
+      <li class="active"><a href="#">Profile</a></li>
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'naukri:mylogout' %}"><button>Logout</button></a></li>
+      {% else %}
+      <li><a href="{% url 'naukri:mylogin' %}"><button>Login</button></a></li>
+      <li><a href="{% url 'social:begin' 'facebook' %}"><button>Login with Facebook</button></a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+  
+  
+
+	{% if jobs %}
+<div class="card-deck">
+		{% for each in jobs %}
+    <div class="card">
+       <div class="card-body">
+		<div class="card-title"><h2><b>{{ each.designation }}</b></h2></div>
+		<ul>
+			<div class="card-text"><li><h4><b>Job Type : </b>{{ each.jobtype }}</h4></li></div>
+			<div class="card-text"><li><h4><b>Experience : </b>{{ each.experience }} yrs</h4></li></div>
+			<div class="card-text"><li><h4><b>Place : </b>{{ each.place }}</h4></li></div>
+			<div class="card-text"><li><h4><b>Required Skills : </b>{{ each.required_skills }}</h4></li></div>
+			<div class="card-text"><li><h4><b>Salary : </b>{{ each.salary }}</h4></li></div>
+			<div class="card-text"><li><h4><b>Contact Person : </b>{{ each.hr_name }}</h4></li></div>
+			<div class="card-text"><li><h4><b>Total Vacancy : </b>{{ each.vacancy }}</h4></li></div>
+		</ul>
+    <div class="card-footer"><small class="text-muted">Last updated 3 mins ago</small></div>
+  </div>
+  </div>
+		{% endfor %}
+  </div>
+	{% endif %}
+<a href="{% url 'naukri:newjob' %}" class="button"><button type="button">Add jobs</button></a>
+</body>
+</html>

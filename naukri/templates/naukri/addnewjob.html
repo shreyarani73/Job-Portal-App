@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'naukri/style.css' %}">
+<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body>
+
+
+{% block navigation %}
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    	<a class="navbar-brand" href="{% url 'naukri:index' %}">
+    	<img src="{% static 'naukri/images/icon.png' %}" width="30" height="30" alt="Logo">
+    </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url 'naukri:index' %}">Home</a></li>
+      <li class="active"><a href="#">Profile</a></li>
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'naukri:mylogout' %}"><button>Logout</button></a></li>
+      {% else %}
+      <li><a href="{% url 'naukri:mylogin' %}"><button>Login</button></a></li>
+      <li><a href="{% url 'social:begin' 'facebook' %}"><button>Login with Facebook</button></a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+  
+  
+
+<div class="container">
+<div class="card">
+ <div class="card-body">
+<form method='POST' action='' autocomplete="off" >
+	{% csrf_token %}
+	<!-- <p><label for="newjob.company">Company id*: </label>
+		<input id="newjob.company" type="text" name="company" maxlength="100" required /></p> -->
+		<div class="form-group">
+			<p><label for="newjob.designation">Designation*: </label>
+				<input id="newjob.designation" class="form-control" type="text" name="designation" maxlength="100" required /></p>
+		</div>
+		<div class="form-group">
+			<p><label for="newjob.hr_name">HR Name*: </label>
+				<input id="newjob.hr_name" class="form-control" type="text" name="hr_name" maxlength="100" required /></p>
+		</div>
+			
+		<div class="form-group">	
+			<p><label for="newjob.experience">Experience*: </label>
+				<input id="newjob.experience" class="form-control" type="text" name="experience" maxlength="100" required /></p>
+		</div>
+		<div class="form-group">
+			<p><label for="newjob.vacancy">Vacancy*: </label>
+				<input id="newjob.vacancy" class="form-control" type="text" name="vacancy" maxlength="100" required /></p>
+		</div>
+		<div class="form-group">
+			<p><label for="newjob.place">Place*: </label>
+				<input id="newjob.place" class="form-control" type="text" name="place" maxlength="100" required /></p>
+		</div>
+		<div class="form-group">
+			<p><label for="newjob.salary">Salary*: </label>
+				<input id="newjob.salary" class="form-control" type="text" name="salary" maxlength="100" required /></p>
+		</div>
+		<div class="form-group">
+			<p><label for="newjob.jobtype">Job Type*: </label>
+				<input id="newjob.jobtype" class="form-control" type="text" name="jobtype" maxlength="100" required /></p>
+		</div>
+		<div class="form-group">
+			<p><label for="newjob.required_skills">Required Skills*: </label>
+				<input id="newjob.required_skills" class="form-control" type="text" name="required_skills" maxlength="100" required /></p>
+		</div>
+
+	<input type= 'submit' value='Submit' />
+</div>
+</form>
+</div>
+</div>
+</body>
+</html>
