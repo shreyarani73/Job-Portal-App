@@ -1,16 +1,13 @@
-# This is a very simple Job Portal clone website built in Django#
-
-(https://github.com/geekaddict/Job-Portal--Naukri/edit/gh-pages/index.md)
-
+# This is a very simple Job Portal clone website built in Django
 
 The project follows basic CRUD application approach
-**-Create job vacancies
--Read or display vacancies
--Update application
--Delete vacancies**
+- Create job vacancies
+- Read or display vacancies
+- Update application
+- Delete vacancies
 
 
-##**RUNNING THIS PROJECT**
+# **RUNNING THIS PROJECT**
 
 To get this project up and running you should start by having Python installed on your computer. It's advised you create a virtual environment to store your projects dependencies separately. You can install virtualenv with
 
