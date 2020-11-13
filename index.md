@@ -1,37 +1,33 @@
-## Welcome to GitHub Pages
+# This is a very simple Job Portal clone website built in Django#
 
-You can use the [editor on GitHub](https://github.com/geekaddict/Job-Portal--Naukri/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+(https://github.com/geekaddict/Job-Portal--Naukri/edit/gh-pages/index.md)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+The project follows basic CRUD application approach
+**-Create job vacancies
+-Read or display vacancies
+-Update application
+-Delete vacancies**
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+##**RUNNING THIS PROJECT**##
 
-# Header 1
-## Header 2
-### Header 3
+To get this project up and running you should start by having Python installed on your computer. It's advised you create a virtual environment to store your projects dependencies separately. You can install virtualenv with
 
-- Bulleted
-- List
+`pip install virtualenv`
 
-1. Numbered
-2. List
+Clone or download this repository and open it in your editor of choice. In a terminal (mac/linux) or windows terminal, run the following command in the base directory of this project
 
-**Bold** and _Italic_ and `Code` text
+`virtualenv env`
 
-[Link](url) and ![Image](src)
-```
+That will create a new folder env in your project directory. Next activate it with this command on mac/linux:
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+`source env/bin/active`
 
-### Jekyll Themes
+Then install the project dependencies with
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/geekaddict/Job-Portal--Naukri/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+`pip install -r requirements.txt`
 
-### Support or Contact
+Now you can run the project with this command
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+`python manage.py runserver`
